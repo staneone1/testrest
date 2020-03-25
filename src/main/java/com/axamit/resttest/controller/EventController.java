@@ -26,7 +26,7 @@ public class EventController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<OneDayStatisticsDto> registerVisit(@RequestBody @Valid VisitEventForm event, BindingResult result) {
+    public ResponseEntity<OneDayStatisticsDto> addEvent(@RequestBody @Valid VisitEventForm event, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().build();
         } else {

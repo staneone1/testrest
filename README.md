@@ -33,7 +33,7 @@ The response will be statistics for the day:
 
 `to` - date in the format ISO 8601 format (YYYY-MM-DD)
 
-Example: `http://localhost:8080/event/statistics?from=2020-03-24&to=2020-03-25`
+Example: `http://localhost:8080/event/statistics?from=2020-03-24&to=2020-03-25` - **statistics for one day**
 
 The response will be statistics for the day:
 ```$javascript
