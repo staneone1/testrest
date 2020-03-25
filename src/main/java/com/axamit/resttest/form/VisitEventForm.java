@@ -5,12 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class VisitEventForm {
 
-    private Integer userId;
-    private Integer pageId;
+    @NotNull
+    private Long userId;
+    @NotNull
+    private Long pageId;
 }

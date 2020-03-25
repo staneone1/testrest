@@ -19,18 +19,19 @@ public class EventRepositoryImpl implements EventRepository {
             "SELECT count(user_id) AS amount_all_visits, count(DISTINCT user_id) AS amount_unique_users " +
             "FROM visit_events " +
             "WHERE timestamp::DATE = now()::DATE AND page_id = :page_id;";
-    private static final String SELECT_PERIOD_STATISTICS_QUERY = "SELECT " +
-            "  sum(statistics.amount_all_visits) AS amount_all_visits, " +
-            "  sum(statistics.amount_unique_users) AS amount_unique_users, " +
-            "  sum(CASE WHEN statistics.visited_pages > 5 THEN 1 ELSE 0 END) AS amount_regular_users " +
-            "FROM (" +
-            "       SELECT count(user_id)          AS amount_total_visits, " +
-            "              count(DISTINCT user_id) AS amount_unique_users, " +
-            "              count(DISTINCT page_id) AS visited_pages " +
-            "       FROM visit_events " +
-            "       WHERE timestamp >= :from AND timestamp <= :to " +
-            "       GROUP BY user_id " +
-            "     ) AS statistics;";;
+    private static final String SELECT_PERIOD_STATISTICS_QUERY =
+            "SELECT " +
+                    "  sum(statistics.amount_all_visits) AS amount_all_visits, " +
+                    "  sum(statistics.amount_unique_users) AS amount_unique_users, " +
+                    "  sum(CASE WHEN statistics.visited_pages > 10 THEN 1 ELSE 0 END) AS amount_regular_users " +
+                    "FROM (" +
+                    "       SELECT count(user_id)          AS amount_all_visits, " +
+                    "              count(DISTINCT user_id) AS amount_unique_users, " +
+                    "              count(DISTINCT page_id) AS visited_pages " +
+                    "       FROM visit_events " +
+                    "       WHERE timestamp >= :from AND timestamp <= :to " +
+                    "       GROUP BY user_id " +
+                    "     ) AS statistics;";
 
     private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -40,7 +41,7 @@ public class EventRepositoryImpl implements EventRepository {
     }
 
     @Override
-    public OneDayStatisticsDto addEvent(Integer userId, Integer pageId, Timestamp timestamp) {
+    public OneDayStatisticsDto addEvent(Long userId, Long pageId, Timestamp timestamp) {
 
         Map<String, Object> queryParams = new HashMap<>();
 

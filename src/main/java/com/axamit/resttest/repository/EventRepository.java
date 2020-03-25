@@ -7,6 +7,6 @@ import java.sql.Timestamp;
 
 public interface EventRepository {
 
-    OneDayStatisticsDto addEvent(Integer userId, Integer pageId, Timestamp timestamp);
+    OneDayStatisticsDto addEvent(Long userId, Long pageId, Timestamp timestamp);
     PeriodStatisticsDto getStatisticsForPeriod(Timestamp from, Timestamp to);
 }

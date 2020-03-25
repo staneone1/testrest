@@ -12,14 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 @AllArgsConstructor
 public class PeriodStatisticsDto {
 
-    private Integer amountAllVisits;
-    private Integer amountUniqueUsers;
-    private Integer amountRegularUsers;
+    private Long amountAllVisits;
+    private Long amountUniqueUsers;
+    private Long amountRegularUsers;
 
     public static final RowMapper<PeriodStatisticsDto> ROW_MAPPER =
             (resultSet, i) -> PeriodStatisticsDto.builder()
-                    .amountAllVisits(resultSet.getInt("amount_all_visits"))
-                    .amountUniqueUsers(resultSet.getInt("amount_unique_users"))
-                    .amountRegularUsers(resultSet.getInt("amount_regular_users"))
+                    .amountAllVisits(resultSet.getLong("amount_all_visits"))
+                    .amountUniqueUsers(resultSet.getLong("amount_unique_users"))
+                    .amountRegularUsers(resultSet.getLong("amount_regular_users"))
                     .build();
 }
