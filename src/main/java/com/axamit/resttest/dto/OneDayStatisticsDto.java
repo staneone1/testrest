@@ -10,15 +10,14 @@ import org.springframework.jdbc.core.RowMapper;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DailyStatisticsDto {
+public class OneDayStatisticsDto {
 
     private Integer amountAllVisits;
     private Integer amountUniqueUsers;
 
-    public static final RowMapper<DailyStatisticsDto> ROW_MAPPER =
-            (resultSet, i) -> DailyStatisticsDto.builder()
+    public static final RowMapper<OneDayStatisticsDto> ROW_MAPPER =
+            (resultSet, i) -> OneDayStatisticsDto.builder()
                     .amountAllVisits(resultSet.getInt("amount_all_visits"))
                     .amountUniqueUsers(resultSet.getInt("amount_unique_users"))
                     .build();
-
 }

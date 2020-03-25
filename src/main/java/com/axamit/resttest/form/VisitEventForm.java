@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VisitForm {
+public class VisitEventForm {
 
     private Integer userId;
     private Integer pageId;

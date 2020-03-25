@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXIST visit_event(
+CREATE TABLE IF NOT EXIST visit_events(
             user_id INTEGER NOT NULL,
             page_id INTEGER NOT NULL,
             timestamp TIMESTAMP NOT NULL
